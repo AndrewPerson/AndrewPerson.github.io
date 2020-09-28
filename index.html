@@ -16,21 +16,31 @@
         gtag('js', new Date());
         gtag('config', 'UA-148099751-2');
     </script>
+
+    <script>
+        const version = "1.0";
+
+        window.onload = () => {
+            document.getElementById("version").textContent = version;
+        }
+    </script>
 </head>
 
 <body>
     <div class="container" style="margin-top: 3em;">
-        <h1 class="hideable">School IDForge</h1>
+        <h1 style="display:inline">School IDForge       </h1>
+        <h5 style="display:inline">Version: </h5>
+        <h5 style="display:inline" id="version"></h5>
 
-        <input id="idInput" class="form-control hideable" placeholder="Student ID">
+        <input id="idInput" class="form-control" placeholder="Student ID">
 
-        <div id="outputDiv" class="hideable"></div>
+        <div id="outputDiv"></div>
  
         <div style="text-align:center; margin-top:50px;">
             <img id="barcImg" style="width:auto; height:auto;"> <br />
         </div>
 
-        <div class="btn-group hideable">
+        <div class="btn-group">
             <a class="btn btn-link" href="https://github.com/neelkarma/schoolidforge/wiki">Need Help/Info?</a>
             <a class="btn btn-link" href="https://github.com/neelkarma/schoolidforge">View Source</a>
         </div>
