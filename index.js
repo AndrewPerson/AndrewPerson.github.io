@@ -1,4 +1,7 @@
-const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+$(window).resize(forge);
+idInput.oninput = forge;
+
+const defaultvh = 657;
 const defaultvw = 1366;
 const barcWidth = 136;
 
@@ -35,9 +38,7 @@ function forge() {
     });
     barcImg.src = barcCanvas.toDataURL('image/png');
 
-    var realBarcWidth = barcWidth * (defaultvw / vw);
+    var realBarcWidth = barcWidth * Math.max(window.innerWidth / defaultvw, window.innerHeight / defaultvh);
 
     barcImg.style = `width:${realBarcWidth}px; height:auto;`;
 }
-
-idInput.oninput = forge;
