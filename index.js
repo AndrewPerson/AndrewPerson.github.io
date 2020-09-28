@@ -38,7 +38,7 @@ function forge() {
     });
     barcImg.src = barcCanvas.toDataURL('image/png');
 
-    var realBarcWidth = barcWidth * Math.max(defaultvw / (window.innerWidth / window.devicePixelRatio), defaultvh / (window.innerHeight / window.devicePixelRatio));
+    var realBarcWidth = barcWidth * Math.max((window.innerWidth / window.devicePixelRatio) / defaultvw, (window.innerHeight / window.devicePixelRatio) / defaultvw);
     //var realBarcWidth = 136;
 
     barcImg.style = `width:${realBarcWidth}px; height:auto;`;
