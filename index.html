@@ -17,13 +17,7 @@
         gtag('config', 'UA-148099751-2');
     </script>
 
-    <script>
-        const version = "0.2";
-
-        window.onload = () => {
-            document.getElementById("version").textContent = version;
-        }
-    </script>
+    
 </head>
 
 <body>
@@ -44,6 +38,11 @@
             <a class="btn btn-link" href="https://github.com/neelkarma/schoolidforge/wiki">Need Help/Info?</a>
             <a class="btn btn-link" href="https://github.com/neelkarma/schoolidforge">View Source</a>
         </div>
+
+        <br />
+        <div id="debug">
+
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -58,6 +57,15 @@
         integrity="sha512-5uGnKj8h56cEozQZHq09metdJx1V6UM8qs7M+bG7EJMKYAKBl+CWo1SdmqU9RZTTlzIIa4xTCR5LWBY3spP9zw=="
         crossorigin="anonymous"></script>
     <script src="index.js"></script>
+
+    <script>
+        const version = "0.1a";
+
+        window.onload = () => {
+            document.getElementById("version").textContent = version;
+            document.getElementById("debug").innerHTML = window.innerWidth + ", " + window.innerHeight;
+        }
+    </script>
 </body>
 
 </html>
