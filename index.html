@@ -59,11 +59,11 @@
     <script src="index.js"></script>
 
     <script>
-        const version = "0.1b";
+        const version = "0.1c";
 
         window.onload = () => {
             document.getElementById("version").textContent = version;
-            document.getElementById("debug").innerHTML = window.innerWidth * window.devicePixelRatio + ", " + window.innerHeight * devicePixelRatio;
+            document.getElementById("debug").innerHTML = window.innerWidth / window.devicePixelRatio + ", " + window.innerHeight / devicePixelRatio;
         }
     </script>
 </body>
