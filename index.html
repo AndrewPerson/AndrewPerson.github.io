@@ -58,13 +58,17 @@
     <script src="index.js"></script>
 
     <script>
-        const version = "1.0";
+        const version = "1.0a";
 
         window.onload = () => {
             document.getElementById("version").textContent = "Version: " + version;
 
             document.getElementById("debug").innerHTML = $(window).width() / window.devicePixelRatio + ", " + $(window).height() / devicePixelRatio;
         }
+
+        $(window).resize(() => {
+            document.getElementById("debug").innerHTML = Math.round(window.devicePixelRatio * 100);
+        });
     </script>
 </body>
 

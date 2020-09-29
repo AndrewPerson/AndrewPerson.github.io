@@ -1,5 +1,5 @@
 //This only works with on zoom! $(window).resize(forge) doesn't work.
-window.onzoom = forge
+$(window).resize(forge);
 idInput.oninput = forge;
 
 const defaultvh = 657;
