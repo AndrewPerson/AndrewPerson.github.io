@@ -16,14 +16,10 @@ function forge() {
     if (!idInput.value) { return; }
 
     if (isNaN(idInput.value) || idInput.value[idInput.value.length - 1] == " ") {
-        outputDiv.className = "alert alert-danger";
-        outputDiv.style = "margin-bottom: -50px;";
-        outputDiv.innerHTML = `"${idInput.value}" isn't a valid Student ID!`;
+        warn(`"${idInput.value}" isn't a valid Student ID!`);
         return;
     } else if (idInput.value.length != 9) {
-        outputDiv.className = "alert alert-danger";
-        outputDiv.style = "margin-bottom: -50px;";
-        outputDiv.innerHTML = `"${idInput.value}" isn't a valid Student ID!`;
+        warn(`"${idInput.value}" isn't a valid Student ID!`);
         return;
     }
 
@@ -40,10 +36,27 @@ function forge() {
     barcImg.src = barcCanvas.toDataURL('image/png');
 
     if (screen.orientation.type == "landscape-primary" || screen.orientation.type == "landscape-secondary") {
-        var realBarcWidth = barcWidth * Math.max(defaultvw / ($(window).height() / window.devicePixelRatio), defaultvh / ($(window).width() / window.devicePixelRatio));
+        if (navigator.userAgent.match("/Android/i")
+            || navigator.userAgent.match("/webOS/i")
+            || navigator.userAgent.match("/iPhone/i")
+            || navigator.userAgent.match("/iPad/i")
+            || navigator.userAgent.match("/iPod/i")
+            || navigator.userAgent.match("/BlackBerry/i")
+            || navigator.userAgent.match("/Windows Phone/i")) {
+
+            //This is a temporary solution.
+            warn("Hold your device in portrait orientation!");
+            return;
+        }
     } else {
         var realBarcWidth = barcWidth * Math.max(defaultvw / ($(window).width() / window.devicePixelRatio), defaultvh / ($(window).height() / window.devicePixelRatio));
     }
 
     barcImg.style = `width:${realBarcWidth}px; height:auto;`;
+}
+
+function warn(warning) {
+    outputDiv.className = "alert alert-danger";
+    outputDiv.style = "margin-bottom: -50px;";
+    outputDiv.innerHTML = warning;
 }
