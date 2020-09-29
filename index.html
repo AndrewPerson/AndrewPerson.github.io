@@ -55,16 +55,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bwip-js/2.0.10/bwip-js-min.js"
         integrity="sha512-5uGnKj8h56cEozQZHq09metdJx1V6UM8qs7M+bG7EJMKYAKBl+CWo1SdmqU9RZTTlzIIa4xTCR5LWBY3spP9zw=="
         crossorigin="anonymous"></script>
-    <script src="index.js"></script>
+    <script src="index.js" id="main"></script>
 
     <script>
-        const version = "1.0f";
+        const version = "1.0g";
 
         window.onload = () => {
             document.getElementById("version").textContent = "Version: " + version;
 
             //document.getElementById("debug").innerHTML = $(window).width() / window.devicePixelRatio + ", " + $(window).height() / devicePixelRatio;
-            navigator.vibrate([100, 100]);
+            document.getElementById("debug").innerHTML = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
         }
     </script>
 </body>

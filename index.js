@@ -1,3 +1,10 @@
+window.onload = onload;
+var mobile = false;
+
+function onload() {
+    mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+}
+
 //This only works with on zoom! $(window).resize(forge) doesn't work.
 $(window).resize(forge);
 idInput.oninput = forge;
@@ -37,17 +44,9 @@ function forge() {
     barcImg.src = barcCanvas.toDataURL('image/png');
 
     if (screen.orientation.type == "landscape-primary" || screen.orientation.type == "landscape-secondary") {
-        if (navigator.userAgent.match("/Android/i")
-            || navigator.userAgent.match("/webOS/i")
-            || navigator.userAgent.match("/iPhone/i")
-            || navigator.userAgent.match("/iPad/i")
-            || navigator.userAgent.match("/iPod/i")
-            || navigator.userAgent.match("/BlackBerry/i")
-            || navigator.userAgent.match("/Windows Phone/i")) {
-
+        if (mobile) {
             //This is a temporary solution.
             warn("Hold your device in portrait orientation!");
-            navigator.vibrate([100, 100]);
             return;
         }
     } else {
