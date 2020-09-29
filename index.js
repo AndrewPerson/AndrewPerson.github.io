@@ -1,6 +1,7 @@
 //This only works with on zoom! $(window).resize(forge) doesn't work.
 $(window).resize(forge);
 idInput.oninput = forge;
+window.addEventListener("deviceorientation", forge);
 
 const defaultvh = 657;
 const defaultvw = 1366;
@@ -46,6 +47,7 @@ function forge() {
 
             //This is a temporary solution.
             warn("Hold your device in portrait orientation!");
+            navigator.vibrate([100, 100]);
             return;
         }
     } else {
