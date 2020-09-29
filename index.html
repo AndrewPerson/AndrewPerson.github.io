@@ -58,12 +58,13 @@
     <script src="index.js"></script>
 
     <script>
-        const version = "1.0b";
+        const version = "1.0c";
 
         window.onload = () => {
             document.getElementById("version").textContent = "Version: " + version;
 
-            document.getElementById("debug").innerHTML = $(window).width() / window.devicePixelRatio + ", " + $(window).height() / devicePixelRatio;
+            //document.getElementById("debug").innerHTML = $(window).width() / window.devicePixelRatio + ", " + $(window).height() / devicePixelRatio;
+            document.getElementById("debug").innerHTML = screen.orientation;
         }
     </script>
 </body>
