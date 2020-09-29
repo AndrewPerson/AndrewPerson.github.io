@@ -39,7 +39,11 @@ function forge() {
     });
     barcImg.src = barcCanvas.toDataURL('image/png');
 
-    var realBarcWidth = barcWidth * Math.max(defaultvw / ($(window).width() / window.devicePixelRatio), defaultvh / ($(window).height() / window.devicePixelRatio));
+    if (screen.orientation.type == "landscape-primary" || screen.orientation.type == "landscape-secondary") {
+        var realBarcWidth = barcWidth * Math.max(defaultvw / ($(window).height() / window.devicePixelRatio), defaultvh / ($(window).width() / window.devicePixelRatio));
+    } else {
+        var realBarcWidth = barcWidth * Math.max(defaultvw / ($(window).width() / window.devicePixelRatio), defaultvh / ($(window).height() / window.devicePixelRatio));
+    }
 
     barcImg.style = `width:${realBarcWidth}px; height:auto;`;
 }
