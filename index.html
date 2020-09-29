@@ -18,13 +18,13 @@
     </script>
     
     <script>
-        const version = "1.0g";
+        const version = "1.0h";
 
         window.onload = () => {
             document.getElementById("version").textContent = "Version: " + version;
 
             //document.getElementById("debug").innerHTML = $(window).width() / window.devicePixelRatio + ", " + $(window).height() / devicePixelRatio;
-            document.getElementById("debug").innerHTML = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+            document.getElementById("debug").innerHTML = screen.orientation.type.match("landscape").length > 0;
         }
     </script>
 </head>

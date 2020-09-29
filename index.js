@@ -42,7 +42,7 @@ function forge() {
     });
     barcImg.src = barcCanvas.toDataURL('image/png');
 
-    if (screen.orientation.type.match("landscape") && mobile) {
+    if (screen.orientation.type.match("landscape").length > 0 && mobile) {
         //This is a temporary solution.
         warn("Hold your device in portrait orientation!");
         return;
