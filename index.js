@@ -1,12 +1,14 @@
-window.onload = onload;
-var mobile = false;
+window.onload = init;
 
-function onload() {
-    mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+function init() {
+    var sizeSlider = document.getElementById("size")
+    sizeSlider.min = window.innerWidth / 10;
+    sizeSlider.max = window.innerWidth / 1.5;
+    sizeSlider.value = window.innerWidth / 4;
 }
 
 $(window).resize(forge);
-idInput.oninput = forge;
+document.getElementById("container").oninput = forge;
 window.addEventListener("deviceorientation", forge);
 
 const defaultvh = 657;
@@ -42,19 +44,11 @@ function forge() {
     });
     barcImg.src = barcCanvas.toDataURL('image/png');
 
-    if (screen.orientation.type.match("landscape").length > 0 && mobile) {
-        //This is a temporary solution.
-        warn("Hold your device in portrait orientation!");
-        return;
-    } else {
-        var realBarcWidth = barcWidth * Math.max(defaultvw / ($(window).width() / window.devicePixelRatio), defaultvh / ($(window).height() / window.devicePixelRatio));
-    }
-
-    barcImg.style = `width:${realBarcWidth}px; height:auto;`;
+    barcImg.style = `width:${document.getElementById("size").value}px; height:auto;`;
 }
 
 function warn(warning) {
     outputDiv.className = "alert alert-danger";
-    outputDiv.style = "margin-bottom: -50px;";
+    outputDiv.style = "margin-bottom: -6px;";
     outputDiv.innerHTML = warning;
 }

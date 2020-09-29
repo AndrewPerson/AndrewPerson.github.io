@@ -18,26 +18,31 @@
     </script>
     
     <script>
-        const version = "1.0h";
+        //This means that the debugging won't appear in the actual website.
+        if (window.location.href != "schoolidforge.tk") {
+            const version = "1.1";
 
-        window.onload = () => {
-            document.getElementById("version").textContent = "Version: " + version;
+            window.onload = () => {
+                document.getElementById("version").textContent = "Version: " + version;
 
-            //document.getElementById("debug").innerHTML = $(window).width() / window.devicePixelRatio + ", " + $(window).height() / devicePixelRatio;
-            document.getElementById("debug").innerHTML = screen.orientation.type.match("landscape").length > 0;
+                //document.getElementById("debug").innerHTML = $(window).width() / window.devicePixelRatio + ", " + $(window).height() / devicePixelRatio;
+                document.getElementById("debug").innerHTML = navigator.userAgent;
+            }
         }
     </script>
 </head>
 
 <body>
-    <div class="container" style="margin-top: 3em;">
-        <h1 style="display:inline">School IDForge</h1>
+    <div class="container" style="margin-top: 3em;" id="container">
+        <h1 style="display:inline;">School IDForge</h1>
         <h5 style="display:inline" id="version"></h5>
 
-        <input id="idInput" class="form-control" placeholder="Student ID">
+        <input id="idInput" class="form-control" placeholder="Student ID" style="margin-top:10px;">
 
         <div id="outputDiv"></div>
- 
+
+        <input type="range" id="size" style="width:100%; margin-top:10px;">
+
         <div style="text-align:center; margin-top:50px;">
             <img id="barcImg" style="width:auto; height:auto;"> <br />
         </div>
