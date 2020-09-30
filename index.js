@@ -8,18 +8,10 @@ function init() {
     sizeSlider.max = 90;
     sizeSlider.value = 25;
 
-    var img = localStorage.getItem("barcode");
-    if (img) {
-        console.log("Beginning image rendering...");
-        var realImg = new Image;
-        console.log("Assigning image data...");
-        realImg.src = img;
-
-        realImg.onload = () => {
-            console.log("Drawing Image...");
-            barcCanv.getContext("2d").drawImage(realImg, 0, 0, barcCanv.clientWidth, barcCanv.clientHeight);
-            console.log("Image Drawn!");
-        }
+    var id = localStorage.getItem("barcode");
+    if (id) {
+        barcCanv.style = `width:${document.getElementById("size").value}%; height:auto;`;
+        renderBarcode(id);
     }
 }
 
@@ -39,17 +31,27 @@ function forge() {
 
     if (!idInput.value) { return; }
 
-    if (isNaN(idInput.value) || idInput.value[idInput.value.length - 1] == " ") {
-        warn(`"${idInput.value}" isn't a valid Student ID!`);
-        return;
-    } else if (idInput.value.length != 9) {
+    if (!isValidID(idInput.value)) {
         warn(`"${idInput.value}" isn't a valid Student ID!`);
         return;
     }
 
+    renderBarcode(idInput.value);
+}
+
+function isValidID(id) {
+    if (!id) { return false; }
+
+    if (isNaN(id) || id[id.length - 1] == " ") { return false; }
+    else if (id.length != 9) { return false; }
+
+    return true;
+}
+
+function renderBarcode(id) {
     bwipjs.toCanvas(barcCanv, {
         bcid: "code128",
-        text: idInput.value,
+        text: id,
         scale: 12,
         height: 15,
         includetext: true,
@@ -64,5 +66,5 @@ function warn(warning) {
 }
 
 document.getElementById("save").onclick = () => {
-    localStorage.setItem("barcode", barcCanv.toDataURL());
+    if (isValidID(idInput.value)) { localStorage.setItem("barcode", idInput.value); }
 }
