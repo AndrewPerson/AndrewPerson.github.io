@@ -1,15 +1,30 @@
+var barcCanv = document.getElementById("barcCanv");
+var sizeSlider = document.getElementById("size");
+
 window.onload = init;
 
 function init() {
-    var sizeSlider = document.getElementById("size")
-    sizeSlider.min = window.innerWidth / 10;
-    sizeSlider.max = window.innerWidth / 1.5;
-    sizeSlider.value = window.innerWidth / 4;
+    sizeSlider.min = 10;
+    sizeSlider.max = 90;
+    sizeSlider.value = 25;
+
+    var img = localStorage.getItem("barcode");
+    if (img) {
+        console.log("Beginning image rendering...");
+        var realImg = new Image;
+        console.log("Assigning image data...");
+        realImg.src = img;
+
+        realImg.onload = () => {
+            console.log("Drawing Image...");
+            barcCanv.getContext("2d").drawImage(realImg, 0, 0, barcCanv.clientWidth, barcCanv.clientHeight);
+            console.log("Image Drawn!");
+        }
+    }
 }
 
 $(window).resize(forge);
 document.getElementById("container").oninput = forge;
-window.addEventListener("deviceorientation", forge);
 
 const defaultvh = 657;
 const defaultvw = 1366;
@@ -19,8 +34,8 @@ function forge() {
     outputDiv.innerHTML = null;
     outputDiv.className = "";
     outputDiv.style = "";
-    barcImg.src = "";
-    barcImg.style.display = "none";
+
+    barcCanv.style = `width:${document.getElementById("size").value}%; height:auto;`;
 
     if (!idInput.value) { return; }
 
@@ -32,23 +47,22 @@ function forge() {
         return;
     }
 
-    let barcCanvas = document.createElement("canvas");
-
-    bwipjs.toCanvas(barcCanvas, {
+    bwipjs.toCanvas(barcCanv, {
         bcid: "code128",
         text: idInput.value,
-        scale: 3,
+        scale: 12,
         height: 15,
         includetext: true,
         textxalign: "center"
     });
-    barcImg.src = barcCanvas.toDataURL('image/png');
-
-    barcImg.style = `width:${document.getElementById("size").value}px; height:auto;`;
 }
 
 function warn(warning) {
     outputDiv.className = "alert alert-danger";
     outputDiv.style = "margin-bottom: -6px;";
     outputDiv.innerHTML = warning;
+}
+
+document.getElementById("save").onclick = () => {
+    localStorage.setItem("barcode", barcCanv.toDataURL());
 }

@@ -7,44 +7,25 @@
     <title>School IDForge</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148099751-2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'UA-148099751-2');
-    </script>
-    
-    <script>
-        //This means that the debugging won't appear in the actual website.
-        if (window.location.href != "schoolidforge.tk") {
-            const version = "1.1";
-
-            window.onload = () => {
-                document.getElementById("version").textContent = "Version: " + version;
-
-                //document.getElementById("debug").innerHTML = $(window).width() / window.devicePixelRatio + ", " + $(window).height() / devicePixelRatio;
-                document.getElementById("debug").innerHTML = navigator.userAgent;
-            }
-        }
-    </script>
 </head>
 
 <body>
     <div class="container" style="margin-top: 3em;" id="container">
-        <h1 style="display:inline;">School IDForge</h1>
-        <h5 style="display:inline" id="version"></h5>
-
-        <input id="idInput" class="form-control" placeholder="Student ID" style="margin-top:10px;">
+        <h1 id="title" title="v1.2">School IDForge</h1>
+        
+        <div class="input-group" style="margin-top:10px;">
+            <input id="idInput" class="form-control" placeholder="Student ID">
+            <div class="input-group-append">
+                <button class="btn btn-primary" id="save" title="Saves the barcode to local storage, meaning it will appear automatically.">Save</button>
+            </div>
+        </div>
 
         <div id="outputDiv"></div>
 
-        <input type="range" id="size" style="width:100%; margin-top:10px;">
+        <input type="range" id="size" style="width:100%; margin-top:10px;" title="The size of the barcode.">
 
         <div style="text-align:center; margin-top:50px;">
-            <img id="barcImg" style="width:auto; height:auto;"> <br />
+            <canvas id="barcCanv"></canvas> <br />
         </div>
 
         <div class="btn-group">
