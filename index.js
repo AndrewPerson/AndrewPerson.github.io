@@ -1,9 +1,12 @@
-var barcCanv = document.getElementById("barcCanv");
-var sizeSlider = document.getElementById("size");
+var barcCanv;
+var sizeSlider;
 
 window.onload = init;
 
 function init() {
+    barcCanv = document.getElementById("barcCanv");
+    sizeSlider = document.getElementById("size");
+
     sizeSlider.min = 10;
     sizeSlider.max = 90;
     sizeSlider.value = 25;
@@ -13,10 +16,11 @@ function init() {
         barcCanv.style = `width:${document.getElementById("size").value}%; height:auto;`;
         renderBarcode(id);
     }
+
+    document.getElementById("container").oninput = forge;
 }
 
 $(window).resize(forge);
-document.getElementById("container").oninput = forge;
 
 const defaultvh = 657;
 const defaultvw = 1366;

@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<head>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.0.0.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+
+    <script>
+        function redirect(url) {
+            if (url.indexOf("http") == 0) {
+                if (window.location.href != url) { window.location.href = url; }
+            }
+            else {
+                if (window.location.href != window.location.origin + "/" + url) { window.location.href = window.location.origin + "/" + url; }   
+            }
+        }
+    </script>
+    
+    <style>
+        .btn-nav {
+            height: 55px;
+            vertical-align: middle;
+            border-radius: 0;
+        }
+    </style>
+</head>
+
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <h2 onclick="redirect('');" style="cursor:pointer;">School ID Forge</h2>
+
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-nav">
+            <button class="btn btn-light btn-nav" onclick="redirect('')">
+                <p class="nav-item nav-link nav-tabs">Home</p>
+            </button>
+
+            <button class="btn btn-light btn-nav" onclick="redirect('changelog.html')">
+                <p class="nav-item nav-link nav-tabs">Change Log</p>
+            </button>
+
+            <button class="btn btn-light btn-nav" onclick="redirect('reportbugs.html')">
+                <p class="nav-item nav-link nav-tabs">Report Bugs</p>
+            </button>
+
+            <button class="btn btn-light btn-nav" onclick="redirect('https://github.com/AndrewPerson/AndrewPerson.github.io/wiki/How-to-Use')">
+                <p class="nav-item nav-link nav-tabs">Help</p>
+            </button>
+
+            <button class="btn btn-light btn-nav" onclick="redirect('https://github.com/AndrewPerson/AndrewPerson.github.io')">
+                <p class="nav-item nav-link nav-tabs">Source Code</p>
+            </button>
+        </div>
+    </div>
+</nav>
