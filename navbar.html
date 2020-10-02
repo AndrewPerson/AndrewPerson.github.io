@@ -21,38 +21,37 @@
             height: 55px;
             vertical-align: middle;
             border-radius: 0;
+            flex:0 0 auto;
         }
     </style>
 </head>
 
 <nav class="navbar navbar-expand-md navbar-light bg-light">
-    <h2 onclick="redirect('');" style="cursor:pointer;">School ID Forge</h2>
+    <h2 onclick="redirect('');" style="cursor:pointer; flex:0 0 auto;">School ID Forge</h2>
 
     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-        <div class="navbar-nav">
-            <button class="btn btn-light btn-nav" onclick="redirect('')">
-                <p class="nav-item nav-link nav-tabs">Home</p>
-            </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse" style="margin-left:10px;">
+        <button class="btn btn-light btn-nav" onclick="redirect('')">
+            <p class="nav-item nav-link nav-tabs">Home</p>
+        </button>
 
-            <button class="btn btn-light btn-nav" onclick="redirect('changelog.html')">
-                <p class="nav-item nav-link nav-tabs">Change Log</p>
-            </button>
+        <button class="btn btn-light btn-nav" onclick="redirect('https://github.com/AndrewPerson/AndrewPerson.github.io/wiki/How-to-Use')">
+            <p class="nav-item nav-link nav-tabs">Help</p>
+        </button>
 
-            <button class="btn btn-light btn-nav" onclick="redirect('reportbugs.html')">
-                <p class="nav-item nav-link nav-tabs">Report Bugs</p>
-            </button>
+        <button class="btn btn-light btn-nav" onclick="redirect('changelog.html')">
+            <p class="nav-item nav-link nav-tabs">Change Log</p>
+        </button>
 
-            <button class="btn btn-light btn-nav" onclick="redirect('https://github.com/AndrewPerson/AndrewPerson.github.io/wiki/How-to-Use')">
-                <p class="nav-item nav-link nav-tabs">Help</p>
-            </button>
+        <button class="btn btn-light btn-nav" onclick="redirect('reportbugs.html')">
+            <p class="nav-item nav-link nav-tabs">Report Bugs</p>
+        </button>
 
-            <button class="btn btn-light btn-nav" onclick="redirect('https://github.com/AndrewPerson/AndrewPerson.github.io')">
-                <p class="nav-item nav-link nav-tabs">Source Code</p>
-            </button>
-        </div>
+        <button class="btn btn-light btn-nav" onclick="redirect('https://github.com/AndrewPerson/AndrewPerson.github.io')">
+            <p class="nav-item nav-link nav-tabs">Source Code</p>
+        </button>
     </div>
 </nav>

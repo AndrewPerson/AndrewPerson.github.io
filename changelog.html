@@ -9,30 +9,40 @@
     <script src="Scripts/jquery-3.0.0.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
 
-    <script>
-        $.get('navbar.html', function (response) {
-            $('#navbar').html(response);
-        });
-    </script>
+    <script src="loadnavbar.js"></script>
 </head>
 
 <body>
-    <div id="navbar"></div>
+    <div style="position:sticky; top:0; width:100%; z-index:20;">
+        <div id="navbar"></div>
+    </div>
 
-    <table style="width:33%; margin:10px auto 0 auto;">
-        <tr class="bg-light">
-            <td>
-                <br />
-                <h2 class="text-center">Version 1.2.4</h2>
-                <ul style="margin: 0 auto; display:table;">
-                    <li>Added navigation bar</li>
-                    <li>Made Bootstrap files local</li>
-                    <li>Changed UI</li>
-                    <li>Added Change Log</li>
-                </ul>
-                <br />
-            </td>
-        </tr>
-    </table>
+    <div style="width:700px; margin:10px auto;">
+        <div class="bg-light">
+            <br />
+            <h2 class="text-center">Version 1.2.5</h2>
+            <ul style="display:table; margin:auto;">
+                <li>Finally added bug reporting</li>
+                <li>Changed navbar</li>
+                <li></li>
+                <li></li>
+            </ul>
+            <br />
+        </div>
+
+        <br />
+
+        <div class="bg-light">
+            <br />
+            <h2 class="text-center">Version 1.2.4</h2>
+            <ul style="display:table; margin:auto;">
+                <li>Added navigation bar</li>
+                <li>Made Bootstrap files local</li>
+                <li>Changed UI</li>
+                <li>Added Change Log</li>
+            </ul>
+            <br />
+        </div>
+    </div>
 </body>
 </html>

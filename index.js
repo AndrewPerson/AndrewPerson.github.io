@@ -20,12 +20,6 @@ function init() {
     document.getElementById("container").oninput = forge;
 }
 
-$(window).resize(forge);
-
-const defaultvh = 657;
-const defaultvw = 1366;
-const barcWidth = 130;
-
 function forge() {
     outputDiv.innerHTML = null;
     outputDiv.className = "";
