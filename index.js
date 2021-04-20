@@ -12,8 +12,14 @@ function init() {
     sizeSlider.value = 25;
 
     var id = localStorage.getItem("barcode");
-    if (id) {
-        barcCanv.style = `width:${document.getElementById("size").value}%; height:auto;`;
+    var scale = localStorage.getItem("scale");
+    
+    if (scale != undefined) {
+        sizeSlider.value = scale;
+    }
+    
+    if (id != undefined) {
+        barcCanv.style = `width:${sizeSlider.value}%; height:auto;`;
         renderBarcode(id);
     }
 
@@ -64,5 +70,8 @@ function warn(warning) {
 }
 
 document.getElementById("save").onclick = () => {
-    if (isValidID(idInput.value)) { localStorage.setItem("barcode", idInput.value); }
+    if (isValidID(idInput.value)) { 
+        localStorage.setItem("barcode", idInput.value);
+        localStorage.setItem("scale", sizeSlider.value);
+    }
 }
