@@ -1,5 +1,6 @@
 var barcCanv = document.getElementById("barcCanv");
 var sizeSlider = document.getElementById("size");
+var idInput = document.getElementById("idInput");
 
 sizeSlider.min = 10;
 sizeSlider.max = 90;
@@ -13,8 +14,8 @@ if (scale != undefined) {
 }
 
 if (id != undefined) {
-    barcCanv.style = `width:${sizeSlider.value}%; height:auto;`;
-    renderBarcode(id);
+    idInput.value = id;
+    forge();
 }
 
 document.getElementById("container").oninput = forge;
