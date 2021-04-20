@@ -1,30 +1,23 @@
-var barcCanv;
-var sizeSlider;
+var barcCanv = document.getElementById("barcCanv");
+var sizeSlider = document.getElementById("size");
 
-window.onload = init;
+sizeSlider.min = 10;
+sizeSlider.max = 90;
+sizeSlider.value = 25;
 
-function init() {
-    barcCanv = document.getElementById("barcCanv");
-    sizeSlider = document.getElementById("size");
+var id = localStorage.getItem("barcode");
+var scale = localStorage.getItem("scale");
 
-    sizeSlider.min = 10;
-    sizeSlider.max = 90;
-    sizeSlider.value = 25;
-
-    var id = localStorage.getItem("barcode");
-    var scale = localStorage.getItem("scale");
-    
-    if (scale != undefined) {
-        sizeSlider.value = scale;
-    }
-    
-    if (id != undefined) {
-        barcCanv.style = `width:${sizeSlider.value}%; height:auto;`;
-        renderBarcode(id);
-    }
-
-    document.getElementById("container").oninput = forge;
+if (scale != undefined) {
+    sizeSlider.value = scale;
 }
+
+if (id != undefined) {
+    barcCanv.style = `width:${sizeSlider.value}%; height:auto;`;
+    renderBarcode(id);
+}
+
+document.getElementById("container").oninput = forge;
 
 function forge() {
     outputDiv.innerHTML = null;
